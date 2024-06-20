@@ -31,3 +31,20 @@ body {
     text-wrap: balance;
   }
 }
+
+.star {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+.twinkle {
+    animation: twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 0.4; }
+}
