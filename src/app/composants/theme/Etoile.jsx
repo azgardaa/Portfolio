@@ -1,14 +1,16 @@
+"use client";
 import React, { useEffect, useState, useRef } from 'react';
 
 const Etoile = () => {
   const [position, setPosition] = useState({ top: 0, left: 0 });
   const [visible, setVisible] = useState(true);
-  const size = useRef(Math.floor(Math.random() * 4) + 1); // Taille aléatoire entre 1 et 5 pixels
+  const [size, setSize] = useState(4); // Initialisation avec une valeur par défaut pour éviter les divergences
 
   useEffect(() => {
     const windowW = window.innerWidth;
     const windowH = window.innerHeight;
     setPosition({ top: Math.random() * windowH, left: Math.random() * windowW });
+    setSize(Math.floor(Math.random() * 4) + 1); // Taille aléatoire entre 1 et 5 pixels
 
     const cycleStar = () => {
       setVisible(false);
@@ -20,7 +22,7 @@ const Etoile = () => {
       }, 1000); // Temps pendant lequel l'étoile est invisible
     };
 
-    const intervalId = setInterval(cycleStar, Math.random() * 40000 + 10000); // Cycle toutes les 1-5 secondes
+    const intervalId = setInterval(cycleStar, Math.random() * 4000 + 1000); // Cycle toutes les 1-5 secondes
     return () => clearInterval(intervalId);
   }, []);
 
@@ -28,8 +30,8 @@ const Etoile = () => {
     <div
       className={`absolute rounded-full bg-white transition-opacity duration-1000 ease-in-out ${visible ? 'opacity-80' : 'opacity-0'}`}
       style={{
-        width: `${size.current}px`,
-        height: `${size.current}px`,
+        width: `${size}px`,
+        height: `${size}px`,
         top: `${position.top}px`,
         left: `${position.left}px`,
       }}
