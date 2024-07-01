@@ -163,7 +163,7 @@ const ParticlesConfig = {
       }
     },
     "color": {
-      "value":["#2EB67D", "#ECB22E", "#E01E5B", "#36C5F0"],
+      "value":["#36BA98" ,"#E9C46A","#F4A261","#E76F51"],
       "animation": {
         "h": {
           "count": 0,
