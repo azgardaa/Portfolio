@@ -9,10 +9,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        darkGray: '#212121',
-        MGray: '#323232',
-        teal: '#0D7377',
-        LTeal: '#14FFEC',
+        primary: '#36BA98', 
+        secondary: '#E9C46A', 
+        accent: '#F4A261', 
+        danger: '#E76F51',
+        dangerPlus: '#8F4532'
       },
     },
   },
