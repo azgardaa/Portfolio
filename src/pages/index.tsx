@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Chat from "/public/image/Cat03.jpg";
-import pdp from "/public/image/pdp.jpg";
+
 import Slider from "@/components/slider";
 
 export default function Home() {
@@ -9,7 +9,7 @@ export default function Home() {
       <div className=" w-full rounded-md bg-gradient-to-r from-green-600 via-yellow-600 to-orange-700 p-1">
         <div className="flex h-full w-full items-center justify-center bg-gray-800 back p-6">
           <Image
-            src={pdp}
+            src={Chat}
             alt="Photo de noah"
             className="justify-start basis-1/4 max-w-48 h-fit z-20 "
           ></Image>
