@@ -24,9 +24,7 @@ export default function Home() {
             arcu. Nunc porta vulputate elit non convallis. Suspendisse porta
             libero ac libero molestie pellentesque. Nunc scelerisque arcu vitae
             diam tempus ullamcorper ac vitae odio. Phasellus at consectetur dui.
-            Etiam fermentum tortor in fermentum laoreet. Aliquam at urna sed
-            lorem finibus laoreet. Pellentesque nec molestie diam, ac maximus
-            sem.{" "}
+            Etiam fermentum tortor in fermentum laoreet. Aliquam at urna se sem.{" "}
           </p>
         </div>
         <Slider />
