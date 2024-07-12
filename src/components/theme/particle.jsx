@@ -22,7 +22,7 @@ const ParticlesBack = () => {
   };
 
   return (
-    <div id="ParticleBackground" className="z-1">
+    <div id="ParticleBackground" className="z-0">
       <Particles
         id="tsparticles"
         particlesLoaded={particlesLoaded}

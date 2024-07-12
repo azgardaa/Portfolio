@@ -1,23 +1,22 @@
-import type { Metadata } from "next";
+import React from "react";
 import { Inter } from "next/font/google";
-import Header from "../components/header.jsx";
+import Header from "../components/header";
 import ParticlesBack from "../components/theme/particle.jsx";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Layout({
-  children,
-}: Readonly<{
+interface LayoutProps {
   children: React.ReactNode;
-}>) {
-  return (
-    <html lang="fr">
-      <body className={`${inter.className} relative`}>
-        <ParticlesBack />
-
-        <Header />
-        {children}
-      </body>
-    </html>
-  );
 }
+
+const Layout: React.FC<LayoutProps> = ({ children }) => {
+  return (
+    <div className={inter.className}>
+      <ParticlesBack />
+      <Header />
+      {children}
+    </div>
+  );
+};
+
+export default Layout;

@@ -1,3 +1,4 @@
+// pages/_app.js
 import "../styles/globals.css";
 import { AppProps } from "next/app";
 import Layout from "../layouts/layout";
