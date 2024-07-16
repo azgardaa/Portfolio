@@ -1,95 +1,122 @@
-"use client";
-
-import React, { useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import KeenSlider from "keen-slider";
 import "keen-slider/keen-slider.min.css";
-import data from "/public/Data.json";
+import Modal from "./modal";
 
-const Slider = () => {
+const Slider = ({
+  slides,
+  animationDuration = 1000,
+  autoplayDelay = 20000,
+  enableModal = false,
+}) => {
+  const textSliderRef = useRef(null);
+  const imageSliderRef = useRef(null);
+  const [modalImage, setModalImage] = useState(null);
+  const [modalText, setModalText] = useState("");
+  const [centralSlide, setCentralSlide] = useState(1);
+
   useEffect(() => {
-    const animationDuration = 1000;
-    const autoplayDelay = 10000;
+    let textSlider, imageSlider;
 
-    // Texte Slider (anciennement Image Slider)
-    const textSlider = new KeenSlider(
-      "#text-slider",
-      {
-        loop: true,
-        defaultAnimation: {
-          duration: animationDuration,
-        },
-        detailsChanged: (s) => {
-          s.slides.forEach((element, idx) => {
-            element.style.opacity = String(s.track.details.slides[idx].portion);
-          });
-        },
-        renderMode: "custom",
-      },
-      [
-        (slider) => {
-          let timeout;
-          let mouseOver = false;
-          function clearNextTimeout() {
-            clearTimeout(timeout);
-          }
-          function nextTimeout() {
-            clearTimeout(timeout);
-            if (mouseOver) return;
-            timeout = setTimeout(() => {
-              slider.next();
-            }, autoplayDelay);
-          }
-          slider.on("created", () => {
-            slider.container.addEventListener("mouseover", () => {
-              mouseOver = true;
-              clearNextTimeout();
+    const textSliderNode = textSliderRef.current;
+    const imageSliderNode = imageSliderRef.current;
+
+    if (textSliderNode && imageSliderNode) {
+      textSlider = new KeenSlider(
+        textSliderNode,
+        {
+          loop: true,
+          defaultAnimation: {
+            duration: animationDuration,
+          },
+          detailsChanged: (s) => {
+            s.slides.forEach((element, idx) => {
+              element.style.opacity = String(
+                s.track.details.slides[idx].portion
+              );
             });
-            slider.container.addEventListener("mouseout", () => {
-              mouseOver = false;
+          },
+          renderMode: "custom",
+        },
+        [
+          (slider) => {
+            let timeout;
+            let mouseOver = false;
+            function clearNextTimeout() {
+              clearTimeout(timeout);
+            }
+            function nextTimeout() {
+              clearTimeout(timeout);
+              if (mouseOver) return;
+              timeout = setTimeout(() => {
+                slider.next();
+              }, autoplayDelay);
+            }
+            slider.on("created", () => {
+              slider.container.addEventListener("mouseover", () => {
+                mouseOver = true;
+                clearNextTimeout();
+              });
+              slider.container.addEventListener("mouseout", () => {
+                mouseOver = false;
+                nextTimeout();
+              });
               nextTimeout();
             });
-            nextTimeout();
-          });
-          slider.on("dragStarted", clearNextTimeout);
-          slider.on("animationEnded", nextTimeout);
-          slider.on("updated", nextTimeout);
-        },
-      ]
-    );
+            slider.on("dragStarted", clearNextTimeout);
+            slider.on("animationEnded", nextTimeout);
+            slider.on("updated", nextTimeout);
+          },
+        ]
+      );
 
-    // Image Slider (anciennement Text Slider)
-    const imageSlider = new KeenSlider(
-      "#image-slider",
-      {
-        defaultAnimation: {
-          duration: animationDuration,
+      imageSlider = new KeenSlider(
+        imageSliderNode,
+        {
+          defaultAnimation: {
+            duration: animationDuration,
+          },
+          loop: true,
+          slides: {
+            origin: "center",
+            perView: 3,
+            spacing: 20,
+          },
+          detailsChanged: (s) => {
+            const slides = s.track.details.slides;
+            s.slides.forEach((element, idx) => {
+              const isCentral = idx === s.track.details.rel;
+              scaleElement(
+                element.querySelector("div"),
+                slides[idx].portion,
+                isCentral
+              );
+            });
+            setCentralSlide(s.track.details.rel);
+          },
+          initial: 0,
         },
-        loop: true,
-        slides: {
-          origin: "center",
-          perView: 3,
-          spacing: 20,
-        },
-        detailsChanged: (s) => {
-          const slides = s.track.details.slides;
-          s.slides.forEach((element, idx) => {
-            scaleElement(element.querySelector("div"), slides[idx].portion);
-          });
-        },
-        initial: 0,
-      },
-      [SyncSlidersPlugin(textSlider)]
-    );
+        [SyncSlidersPlugin(textSlider)]
+      );
+    }
 
-    function scaleElement(element, portion) {
-      const scale_size = 1.5;
+    function scaleElement(element, portion, isCentral) {
+      const scale_size = isCentral ? 1.5 : 1;
       const scale = 1 - (scale_size - scale_size * portion);
       const scale_style = `scale(${scale})`;
       element.style.transform = scale_style;
       element.style["-webkit-transform"] = scale_style;
 
-      const opacity = portion === 1 ? 1 : 0.2;
+      const opacity = portion === 1 ? 1 : 0.5;
       element.style.opacity = String(opacity);
+
+      if (isCentral) {
+        element.classList.add("central-slide");
+        element.classList.remove("side-slide");
+      } else {
+        element.classList.add("side-slide");
+        element.classList.remove("central-slide");
+      }
     }
 
     function SyncSlidersPlugin(secondSlider) {
@@ -108,31 +135,48 @@ const Slider = () => {
       };
     }
 
-    // Cleanup function
     return () => {
-      textSlider.destroy();
-      imageSlider.destroy();
+      if (textSlider) textSlider.destroy();
+      if (imageSlider) imageSlider.destroy();
     };
-  }, []);
+  }, [textSliderRef, imageSliderRef, animationDuration, autoplayDelay]);
 
-  const slides = data.slides;
+  const openModal = (imageUrl, text) => {
+    setModalImage(imageUrl);
+    setModalText(text);
+  };
 
+  const closeModal = () => {
+    setModalImage(null);
+    setModalText("");
+  };
   return (
-    <div className="py-[50px] px-[20px] bg-gray-800 flex flex-col justify-center h-full">
-      <section className="container">
+    <div className=" bg-gray-800 flex flex-col justify-center h-2/6 py-6">
+      <div className="w-full h-full">
         <div
           id="slider-wrapper"
-          className="hidden xl:grid xl:grid-cols-[50%_1fr] 2xl:grid-cols-[60%_1fr]"
+          className="hidden xl:grid xl:grid-cols-[80%_1fr]  w-full h-full py-4"
         >
-          <div id="image-slider" className="keen-slider relative h-full">
+          <div
+            id="image-slider"
+            className="keen-slider relative h-full"
+            ref={imageSliderRef}
+          >
             {slides.map((slide, index) => (
               <div
                 key={index}
                 className="keen-slider__slide flex flex-col justify-center"
               >
-                <div className="rounded-xl overflow-hidden">
+                <div className="rounded-xl overflow-hidden justify-center">
                   <img
-                    className="block w-full h-full object-contain"
+                    className={`object-contain rounded-xl ${
+                      centralSlide === index ? "cursor-pointer" : ""
+                    }`}
+                    onClick={() =>
+                      enableModal &&
+                      centralSlide === index &&
+                      openModal(slide.imageUrl, slide.text)
+                    }
                     src={slide.imageUrl}
                     alt={slide.alt}
                   />
@@ -140,20 +184,24 @@ const Slider = () => {
               </div>
             ))}
           </div>
-          <div id="text-slider" className="relative z-[1] rounded-xl h-full">
+          <div
+            id="text-slider"
+            className="relative z-10 rounded-xl "
+            ref={textSliderRef}
+          >
             {slides.map((slide, index) => (
               <div
                 key={index}
-                className="keen-slider__slide absolute top-0 w-full h-full flex flex-col justify-center opacity-0 flex-grow"
+                className="keen-slider__slide absolute top-0  flex flex-col justify-center opacity-0 flex-grow"
               >
-                <div className="text-base text-white text-center font-medium h-full w-full align-middle px-4">
+                <div className="text-white text-center font-medium  align-middle px-4">
                   {slide.text}
                 </div>
               </div>
             ))}
           </div>
         </div>
-        <div className="relative xl:hidden flex flex-col gap-6 [&>*:nth-child(2)>img]:order-1">
+        <div className="relative xl:hidden flex flex-col gap-6">
           {slides.map((slide, index) => (
             <div
               key={index}
@@ -170,7 +218,10 @@ const Slider = () => {
             </div>
           ))}
         </div>
-      </section>
+      </div>
+      {enableModal && modalImage && (
+        <Modal imageUrl={modalImage} text={modalText} onClose={closeModal} />
+      )}
     </div>
   );
 };

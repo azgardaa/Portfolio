@@ -16,6 +16,12 @@ const Header = () => {
     setActiveMenu(menu);
   };
 
+  const menuItems = [
+    { name: "Home", href: "/" },
+    { name: "Projet", href: "/projet" },
+    { name: "Contact", href: "/contact" },
+  ];
+
   return (
     <header>
       <nav className="bg-white border border-gray-200 dark:border-gray-700 px-2 sm:px-4 py-2.5 rounded dark:bg-primary shadow">
@@ -27,7 +33,7 @@ const Header = () => {
               alt="Logo Noah"
               width={100}
               height={100}
-            ></Image>
+            />
           </Link>
 
           <div className="flex items-center">
@@ -38,7 +44,6 @@ const Header = () => {
               onClick={toggleMenu}
             >
               <span className="sr-only">Open main menu</span>
-
               <svg
                 className="h-6 w-6"
                 fill="none"
@@ -62,19 +67,22 @@ const Header = () => {
             id="mobile-menu"
           >
             <ul className="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
-              {["Home", "projet", "Contact"].map((menu) => (
-                <li key={menu}>
-                  <Link
-                    href="#"
-                    onClick={() => handleMenuClick(menu)}
-                    className={`block py-2 pr-4 pl-3 ${
-                      activeMenu === menu
-                        ? "font-bold text-blue-700 dark:text-white"
-                        : "text-danger"
-                    } border-b border-gray-100 hover:bg-secondary md:hover:bg-transparent md:border-0 md:hover:text-dangerPlus md:p-0`}
-                    aria-current={activeMenu === menu ? "page" : undefined}
-                  >
-                    {menu}
+              {menuItems.map((menu) => (
+                <li key={menu.name}>
+                  <Link href={menu.href}>
+                    <span
+                      onClick={() => handleMenuClick(menu.name)}
+                      className={`block py-2 pr-4 pl-3 ${
+                        activeMenu === menu.name
+                          ? "font-bold text-blue-700 dark:text-white"
+                          : "text-danger"
+                      } border-b border-gray-100 hover:bg-secondary md:hover:bg-transparent md:border-0 md:hover:text-dangerPlus md:p-0`}
+                      aria-current={
+                        activeMenu === menu.name ? "page" : undefined
+                      }
+                    >
+                      {menu.name}
+                    </span>
                   </Link>
                 </li>
               ))}

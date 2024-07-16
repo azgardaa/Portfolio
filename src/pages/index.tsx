@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Chat from "/public/image/Cat03.jpg";
-
-import Slider from "@/components/slider";
+import data from "../../public/Data.json";
+import Slider from "../components/slider";
 
 export default function Home() {
   return (
@@ -27,7 +27,7 @@ export default function Home() {
             Etiam fermentum tortor in fermentum laoreet. Aliquam at urna se sem.{" "}
           </p>
         </div>
-        <Slider />
+        <Slider slides={data.slides} enableModal={false} />
       </div>
       <div>
         <p className="z-50 p-50 text-white">Jadore OC</p>

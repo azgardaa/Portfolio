@@ -1,0 +1,84 @@
+{
+        "Kasa": [
+          {
+            "id": "1",
+            "imageUrl": "./image/Kasa/acceuil.PNG",
+            "alt": "Projet Kasa Image d'acceuil",
+            "text": "Acceuil"
+          },
+          {
+            "id": "2",
+            "imageUrl": "./image/Kasa/appart.PNG",
+            "alt": "Fiche des appartements",
+            "text": "Fiche des appartements"
+          },
+          {
+            "id": "3",
+            "imageUrl": "./image/Kasa/apropos.PNG",
+            "alt": "Diapositive 3",
+            "text": "  "
+          },
+          {
+            "id": "4",
+            "imageUrl": "./image/Kasa/404.PNG",
+            "alt": "Projet Kasa Erreur404",
+            "text": "erreur404 tu connais "
+          }
+        ],
+        "Grimoire": [
+            {
+              "id": "1",
+              "imageUrl": "./image/Grimoire/chat1.avif",
+              "alt": "Projet Kasa Image d'acceuil",
+              "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            },
+            {
+              "id": "2",
+              "imageUrl": "./image/Grimoire/cat2.jpg",
+              "alt": "Fiche des appartements",
+              "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            },
+            {
+              "id": "3",
+              "imageUrl": "./image/Grimoire/cat5.png",
+              "alt": "Diapositive 3",
+              "text": " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. "
+            },
+            {
+              "id": "4",
+              "imageUrl": "./image/Grimoire/wilfied 1.avif",
+              "alt": "Projet Kasa Erreur404",
+              "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            }
+          ],
+          "autre": [
+            {
+              "id": "1",
+              "imageUrl": "./image/Grimoire/chat1.avif",
+              "alt": "Projet Kasa Image d'acceuil",
+              "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            },
+            {
+              "id": "2",
+              "imageUrl": "./image/Grimoire/cat2.jpg",
+              "alt": "Fiche des appartements",
+              "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            },
+            {
+              "id": "3",
+              "imageUrl": "./image/Grimoire/cat5.png",
+              "alt": "Diapositive 3",
+              "text": " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. "
+            },
+            {
+              "id": "4",
+              "imageUrl": "./image/Grimoire/wilfied 1.avif",
+              "alt": "Projet Kasa Erreur404",
+              "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            }
+          ]
+    } 
+  
+  
+ 
+ 
