@@ -151,7 +151,7 @@ const Slider = ({
     setModalText("");
   };
   return (
-    <div className=" bg-gray-800 flex flex-col justify-center h-2/6 py-6">
+    <div className=" bg-gray-800 flex flex-col justify-center h-2/6 w-full">
       <div className="w-full h-full">
         <div
           id="slider-wrapper"
