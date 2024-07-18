@@ -1,0 +1,25 @@
+{
+    "slides": [
+      {
+        "title": "Giau Pass - Italy",
+        "subtitle": "A beautiful mountain pass in the Dolomites.",
+        "backgroundImageSrc": "./image/Cat03.jpg"
+      },
+      {
+        "title": "Bogliasco - Italy",
+        "subtitle": "A charming village on the Italian Riviera.",
+        "backgroundImageSrc": "./image/fondballon.PNG"
+      },
+      {
+        "title": "County Clare - Ireland",
+        "subtitle": "Famous for its stunning coastal scenery.",
+        "backgroundImageSrc": "https://i.imgur.com/idjXzVQ.jpg"
+      },
+      {
+        "title": "Crater Rock, OR - United States",
+        "subtitle": "A scenic spot in the Cascade Range.",
+        "backgroundImageSrc": "https://i.imgur.com/8DYumaY.jpg"
+      }
+    ]
+  }
+  

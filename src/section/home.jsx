@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <section
       id="home"
-      className="section w-full h-screen bg-gray-800 flex flex-col items-center justify-center"
+      className="section w-full h-[100vh] bg-gray-800 flex flex-col items-center justify-center"
     >
       <p className="text-white text-4xl mb-4">Hi !</p>
       <div className="flex items-center justify-center">

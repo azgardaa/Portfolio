@@ -32,8 +32,65 @@ body {
   }
 }
 
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 
+@keyframes slideOutToLeft {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}
 
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutToRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+.animate-slideInFromRight {
+  animation: slideInFromRight 0.5s forwards;
+}
+
+.animate-slideOutToLeft {
+  animation: slideOutToLeft 0.5s forwards;
+}
+
+.animate-slideInFromLeft {
+  animation: slideInFromLeft 0.5s forwards;
+}
+
+.animate-slideOutToRight {
+  animation: slideOutToRight 0.5s forwards;
+}
 
 
 
