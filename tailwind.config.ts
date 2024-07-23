@@ -24,7 +24,7 @@ const config: Config = {
         '100p': '100%',
       },
       colors: {
-        primary: '#36BA98', 
+        primary: '#03224C', 
         secondary: '#E9C46A', 
         accent: '#F4A261', 
         danger: '#E76F51',

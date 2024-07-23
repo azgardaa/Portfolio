@@ -6,7 +6,7 @@ export default function About() {
   return (
     <section
       id="apropos"
-      className="section w-full h-[100vh] flex flex-col items-center justify-center"
+      className="w-full h-[100vh] flex flex-col items-center justify-center"
     >
       <HeroSlider slides={slidesData.slides} />
     </section>

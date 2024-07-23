@@ -5,7 +5,7 @@ import Contact from "@/section/contact";
 
 export default function Main() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between ml-[134px] ">
+    <main className="flex min-h-screen flex-col items-center justify-between ml-[134px] bg-gray-800 ">
       <Home />
       <About />
       <Projet />

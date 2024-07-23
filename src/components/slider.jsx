@@ -1,27 +1,56 @@
 import React, { useRef, useEffect, useState } from "react";
 import KeenSlider from "keen-slider";
 import "keen-slider/keen-slider.min.css";
-import Modal from "./modal";
 
 const Slider = ({
   slides,
   animationDuration = 1000,
   autoplayDelay = 20000,
-  enableModal = false,
+  enableText = true,
 }) => {
   const textSliderRef = useRef(null);
   const imageSliderRef = useRef(null);
-  const [modalImage, setModalImage] = useState(null);
-  const [modalText, setModalText] = useState("");
   const [centralSlide, setCentralSlide] = useState(1);
 
   useEffect(() => {
-    let textSlider, imageSlider;
+    let textSlider;
+    let imageSlider;
 
     const textSliderNode = textSliderRef.current;
     const imageSliderNode = imageSliderRef.current;
 
-    if (textSliderNode && imageSliderNode) {
+    if (imageSliderNode) {
+      imageSlider = new KeenSlider(
+        imageSliderNode,
+        {
+          defaultAnimation: {
+            duration: animationDuration,
+          },
+          loop: true,
+          slides: {
+            origin: "center",
+            perView: 2.6,
+            spacing: 10,
+          },
+          detailsChanged: (s) => {
+            const slides = s.track.details.slides;
+            s.slides.forEach((element, idx) => {
+              const isCentral = idx === s.track.details.rel;
+              scaleElement(
+                element.querySelector("div"),
+                slides[idx].portion,
+                isCentral
+              );
+            });
+            setCentralSlide(s.track.details.rel);
+          },
+          initial: 0,
+        },
+        enableText ? [SyncSlidersPlugin(textSlider)] : []
+      );
+    }
+
+    if (enableText && textSliderNode) {
       textSlider = new KeenSlider(
         textSliderNode,
         {
@@ -69,39 +98,10 @@ const Slider = ({
           },
         ]
       );
-
-      imageSlider = new KeenSlider(
-        imageSliderNode,
-        {
-          defaultAnimation: {
-            duration: animationDuration,
-          },
-          loop: true,
-          slides: {
-            origin: "center",
-            perView: 3,
-            spacing: 20,
-          },
-          detailsChanged: (s) => {
-            const slides = s.track.details.slides;
-            s.slides.forEach((element, idx) => {
-              const isCentral = idx === s.track.details.rel;
-              scaleElement(
-                element.querySelector("div"),
-                slides[idx].portion,
-                isCentral
-              );
-            });
-            setCentralSlide(s.track.details.rel);
-          },
-          initial: 0,
-        },
-        [SyncSlidersPlugin(textSlider)]
-      );
     }
 
     function scaleElement(element, portion, isCentral) {
-      const scale_size = isCentral ? 1.5 : 1;
+      const scale_size = isCentral ? 2 : 0.5;
       const scale = 1 - (scale_size - scale_size * portion);
       const scale_style = `scale(${scale})`;
       element.style.transform = scale_style;
@@ -136,47 +136,47 @@ const Slider = ({
     }
 
     return () => {
-      if (textSlider) textSlider.destroy();
-      if (imageSlider) imageSlider.destroy();
+      if (textSlider && typeof textSlider.destroy === "function") {
+        textSlider.destroy();
+      }
+      if (imageSlider && typeof imageSlider.destroy === "function") {
+        imageSlider.destroy();
+      }
     };
-  }, [textSliderRef, imageSliderRef, animationDuration, autoplayDelay]);
+  }, [
+    textSliderRef,
+    imageSliderRef,
+    animationDuration,
+    autoplayDelay,
+    enableText,
+  ]);
 
-  const openModal = (imageUrl, text) => {
-    setModalImage(imageUrl);
-    setModalText(text);
-  };
-
-  const closeModal = () => {
-    setModalImage(null);
-    setModalText("");
-  };
   return (
-    <div className=" bg-gray-800 flex flex-col justify-center h-2/6 w-full">
+    <div className="bg-gray-800 flex flex-col justify-center h-full w-full">
       <div className="w-full h-full">
         <div
           id="slider-wrapper"
-          className="hidden xl:grid xl:grid-cols-[80%_1fr]  w-full h-full py-4"
+          className={`${
+            enableText ? "xl:grid-cols-[80%_1fr]" : "xl:grid-cols-[100%_1fr]"
+          } hidden xl:grid w-full h-full py-4`}
         >
           <div
             id="image-slider"
-            className="keen-slider relative h-full"
+            className="keen-slider relative h-full w-100p"
             ref={imageSliderRef}
           >
             {slides.map((slide, index) => (
               <div
                 key={index}
-                className="keen-slider__slide flex flex-col justify-center"
+                className={`keen-slider__slide flex flex-col justify-center ${
+                  centralSlide === index ? "w-2/4" : "w-1/4"
+                }`}
               >
                 <div className="rounded-xl overflow-hidden justify-center">
                   <img
                     className={`object-contain rounded-xl ${
                       centralSlide === index ? "cursor-pointer" : ""
                     }`}
-                    onClick={() =>
-                      enableModal &&
-                      centralSlide === index &&
-                      openModal(slide.imageUrl, slide.text)
-                    }
                     src={slide.imageUrl}
                     alt={slide.alt}
                   />
@@ -184,22 +184,24 @@ const Slider = ({
               </div>
             ))}
           </div>
-          <div
-            id="text-slider"
-            className="relative z-10 rounded-xl "
-            ref={textSliderRef}
-          >
-            {slides.map((slide, index) => (
-              <div
-                key={index}
-                className="keen-slider__slide absolute top-0  flex flex-col justify-center opacity-0 flex-grow"
-              >
-                <div className="text-white text-center font-medium  align-middle px-4">
-                  {slide.text}
+          {enableText && (
+            <div
+              id="text-slider"
+              className="relative z-10 rounded-xl"
+              ref={textSliderRef}
+            >
+              {slides.map((slide, index) => (
+                <div
+                  key={index}
+                  className="keen-slider__slide absolute top-0 flex flex-col justify-center opacity-0 flex-grow"
+                >
+                  <div className="text-white text-center font-medium align-middle px-4">
+                    {slide.text}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
         <div className="relative xl:hidden flex flex-col gap-6">
           {slides.map((slide, index) => (
@@ -219,9 +221,6 @@ const Slider = ({
           ))}
         </div>
       </div>
-      {enableModal && modalImage && (
-        <Modal imageUrl={modalImage} text={modalText} onClose={closeModal} />
-      )}
     </div>
   );
 };

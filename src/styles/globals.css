@@ -26,6 +26,11 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+.section {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

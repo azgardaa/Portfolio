@@ -1,23 +1,8 @@
 {
-    "Projet": [
-      {
-        "id": "70",
-        "imageUrl": "https://picsum.photos/id/70/600/400",
-        "alt": "Diapositive 1",
-        "text": "1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur recusandae nisi mollitia vel facere dolorem ad sapiente nesciunt, assumenda quod quisquam a qui voluptatem magni beatae iste molestias impedit voluptatum."
-      },
-      {
-        "id": "83",
-        "imageUrl": "https://picsum.photos/id/83/600/400",
-        "alt": "Diapositive 2",
-        "text": "2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur recusandae nisi mollitia vel facere dolorem ad sapiente nesciunt, assumenda quod quisquam a qui voluptatem magni beatae iste molestias impedit voluptatum."
-      },
-      {
-        "id": "94",
-        "imageUrl": "https://picsum.photos/id/94/600/400",
-        "alt": "Diapositive 3",
-        "text": "3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur recusandae nisi mollitia vel facere dolorem ad sapiente nesciunt, assumenda quod quisquam a qui voluptatem magni beatae iste molestias impedit voluptatum."
-      }
-    ]
-   
-  }
+  "images": [
+    "https://picsum.photos/200/300?image=1050",
+    "https://picsum.photos/300/300?image=206",
+    "https://picsum.photos/200/200?image=1001",
+    "https://picsum.photos/300/200?image=883"
+  ]
+}
