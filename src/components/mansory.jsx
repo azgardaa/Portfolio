@@ -39,7 +39,11 @@ const MasonryGrid = () => {
         </Masonry>
       </ResponsiveMasonry>
       {isModalOpen && selectedProject && (
-        <Modal slides={selectedProject} onClose={handleCloseModal} />
+        <Modal
+          slides={selectedProject}
+          github={selectedProject.github}
+          onClose={handleCloseModal}
+        />
       )}
     </ClientOnly>
   );

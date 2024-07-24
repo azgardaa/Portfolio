@@ -3,7 +3,10 @@ import Link from "../components/link";
 
 export default function Contact() {
   return (
-    <section id="contact" className="section h-[100vh] w-full">
+    <section
+      id="contact"
+      className="section w-full flex flex-col justify-center"
+    >
       <Form />
       <Link />
     </section>

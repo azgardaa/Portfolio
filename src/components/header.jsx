@@ -20,7 +20,7 @@ const Header = () => {
 
   return (
     <header className="flex h-[100vh] z-50 fixed ">
-      <nav className="bg-white border border-gray-200 dark:border-gray-700 px-2 sm:px-4 py-2.5 rounded dark:bg-primary shadow">
+      <nav className="border-primary px-2 sm:px-4 py-2.5 rounded bg-primary shadow">
         <div className="container flex flex-col justify-between items-center mx-auto">
           <div
             className="flex items-center cursor-pointer"
@@ -49,7 +49,7 @@ const Header = () => {
                       activeMenu === menu.to
                         ? "font-bold text-white"
                         : "text-danger"
-                    } border-b border-gray-100 hover:bg-secondary md:hover:bg-transparent md:border-0 md:hover:text-dangerPlus md:p-0`}
+                    } hover:bg-secondary md:hover:bg-transparent md:border-0 md:hover:text-dangerPlus md:p-0`}
                     aria-current={activeMenu === menu.to ? "page" : undefined}
                   >
                     {menu.name}

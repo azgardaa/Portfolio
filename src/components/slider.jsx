@@ -20,34 +20,30 @@ const Slider = ({
     const imageSliderNode = imageSliderRef.current;
 
     if (imageSliderNode) {
-      imageSlider = new KeenSlider(
-        imageSliderNode,
-        {
-          defaultAnimation: {
-            duration: animationDuration,
-          },
-          loop: true,
-          slides: {
-            origin: "center",
-            perView: 2.6,
-            spacing: 10,
-          },
-          detailsChanged: (s) => {
-            const slides = s.track.details.slides;
-            s.slides.forEach((element, idx) => {
-              const isCentral = idx === s.track.details.rel;
-              scaleElement(
-                element.querySelector("div"),
-                slides[idx].portion,
-                isCentral
-              );
-            });
-            setCentralSlide(s.track.details.rel);
-          },
-          initial: 0,
+      imageSlider = new KeenSlider(imageSliderNode, {
+        defaultAnimation: {
+          duration: animationDuration,
         },
-        enableText ? [SyncSlidersPlugin(textSlider)] : []
-      );
+        loop: true,
+        slides: {
+          origin: "center",
+          perView: 2.6,
+          spacing: 10,
+        },
+        detailsChanged: (s) => {
+          const slides = s.track.details.slides;
+          s.slides.forEach((element, idx) => {
+            const isCentral = idx === s.track.details.rel;
+            scaleElement(
+              element.querySelector("div"),
+              slides[idx].portion,
+              isCentral
+            );
+          });
+          setCentralSlide(s.track.details.rel);
+        },
+        initial: 0,
+      });
     }
 
     if (enableText && textSliderNode) {
@@ -100,6 +96,18 @@ const Slider = ({
       );
     }
 
+    if (imageSlider && textSlider) {
+      imageSlider.on("slideChanged", (slider) => {
+        const nextId = slider.track.details.rel;
+        textSlider.moveToIdx(nextId);
+      });
+
+      textSlider.on("slideChanged", (slider) => {
+        const nextId = slider.track.details.rel;
+        imageSlider.moveToIdx(nextId);
+      });
+    }
+
     function scaleElement(element, portion, isCentral) {
       const scale_size = isCentral ? 2 : 0.5;
       const scale = 1 - (scale_size - scale_size * portion);
@@ -117,22 +125,6 @@ const Slider = ({
         element.classList.add("side-slide");
         element.classList.remove("central-slide");
       }
-    }
-
-    function SyncSlidersPlugin(secondSlider) {
-      return (firstSlider) => {
-        firstSlider.on("created", () => {
-          secondSlider.on("slideChanged", (secondSlider) => {
-            const nextId = secondSlider.track.details.rel;
-            firstSlider.moveToIdx(nextId);
-          });
-
-          firstSlider.on("slideChanged", (firstSlider) => {
-            const nextId = firstSlider.track.details.rel;
-            secondSlider.moveToIdx(nextId);
-          });
-        });
-      };
     }
 
     return () => {
@@ -187,7 +179,7 @@ const Slider = ({
           {enableText && (
             <div
               id="text-slider"
-              className="relative z-10 rounded-xl"
+              className="keen-slider relative z-10 rounded-xl"
               ref={textSliderRef}
             >
               {slides.map((slide, index) => (
