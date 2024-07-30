@@ -11,7 +11,7 @@ const ScrollSection = ({ children }) => {
   };
 
   const enableScroll = () => {
-    document.body.style.overflow = "auto";
+    document.body.style.overflow = "hidden";
   };
 
   const handleScroll = (deltaY) => {
