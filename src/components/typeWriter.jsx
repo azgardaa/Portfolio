@@ -3,7 +3,7 @@ import Typewriter from "typewriter-effect";
 
 const TypewriterComponent = ({ strings, loop }) => {
   return (
-    <div id="app" className="text-7xl">
+    <div id="app" className="text-2xl md:text-4xl xl:text-7xl ">
       <Typewriter
         options={{
           loop: loop,

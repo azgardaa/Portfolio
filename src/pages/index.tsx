@@ -1,15 +1,19 @@
+import ScrollSection from "@/components/ScrollSection";
 import Home from "@/section/home";
 import About from "@/section/apropos";
 import Projet from "@/section/projet";
 import Contact from "@/section/contact";
+import React from "react";
 
 export default function Main() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between ml-[134px] bg-gray-800 ">
-      <Home />
-      <About />
-      <Projet />
-      <Contact />
+    <main className="bg-gray-800 w-auto md:pl-[10vh]">
+      <ScrollSection>
+        <Home />
+        <About />
+        <Projet />
+        <Contact />
+      </ScrollSection>
     </main>
   );
 }

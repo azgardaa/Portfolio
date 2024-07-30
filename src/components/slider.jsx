@@ -27,8 +27,8 @@ const Slider = ({
         loop: true,
         slides: {
           origin: "center",
-          perView: 2.6,
-          spacing: 10,
+          perView: 1.6,
+          spacing: 5,
         },
         detailsChanged: (s) => {
           const slides = s.track.details.slides;
@@ -56,9 +56,8 @@ const Slider = ({
           },
           detailsChanged: (s) => {
             s.slides.forEach((element, idx) => {
-              element.style.opacity = String(
-                s.track.details.slides[idx].portion
-              );
+              element.style.display =
+                s.track.details.rel === idx ? "block" : "none";
             });
           },
           renderMode: "custom",
@@ -144,74 +143,70 @@ const Slider = ({
   ]);
 
   return (
-    <div className="bg-gray-800 flex flex-col justify-center h-full w-full">
-      <div className="w-full h-full">
+    <div className=" flex flex-col justify-center  w-full flex-grow">
+      <div
+        id="slider-wrapper"
+        className="py-4 hidden lg:block xl:block 2xl:block "
+      >
         <div
-          id="slider-wrapper"
-          className={`${
-            enableText ? "xl:grid-cols-[80%_1fr]" : "xl:grid-cols-[100%_1fr]"
-          } hidden xl:grid w-full h-full py-4`}
+          id="image-slider"
+          className="keen-slider relative  w-100p"
+          ref={imageSliderRef}
         >
+          {slides.map((slide, index) => (
+            <div
+              key={index}
+              className={`keen-slider__slide flex flex-col justify-center ${
+                centralSlide === index ? "w-2/4" : "w-1/4"
+              }`}
+            >
+              <div className="rounded-xl overflow-hidden justify-center">
+                <img
+                  className={`object-contain rounded-xl ${
+                    centralSlide === index ? "cursor-pointer" : ""
+                  }`}
+                  src={slide.imageUrl}
+                  alt={slide.alt}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+        {enableText && (
           <div
-            id="image-slider"
-            className="keen-slider relative h-full w-100p"
-            ref={imageSliderRef}
+            id="text-slider"
+            className="keen-slider relative z-10 rounded-xl flex-grow"
+            ref={textSliderRef}
           >
             {slides.map((slide, index) => (
               <div
                 key={index}
-                className={`keen-slider__slide flex flex-col justify-center ${
-                  centralSlide === index ? "w-2/4" : "w-1/4"
-                }`}
+                className="keen-slider__slide absolute top-0 opacity-100  flex-col justify-center "
               >
-                <div className="rounded-xl overflow-hidden justify-center">
-                  <img
-                    className={`object-contain rounded-xl ${
-                      centralSlide === index ? "cursor-pointer" : ""
-                    }`}
-                    src={slide.imageUrl}
-                    alt={slide.alt}
-                  />
+                <div className="text-white text-center opacity-100 font-medium align-middle px-4 ">
+                  {slide.text}
                 </div>
               </div>
             ))}
           </div>
-          {enableText && (
-            <div
-              id="text-slider"
-              className="keen-slider relative z-10 rounded-xl"
-              ref={textSliderRef}
-            >
-              {slides.map((slide, index) => (
-                <div
-                  key={index}
-                  className="keen-slider__slide absolute top-0 flex flex-col justify-center opacity-0 flex-grow"
-                >
-                  <div className="text-white text-center font-medium align-middle px-4">
-                    {slide.text}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-        <div className="relative xl:hidden flex flex-col gap-6">
-          {slides.map((slide, index) => (
-            <div
-              key={index}
-              className="grid grid-cols-2 gap-3 md:gap-5 lg:gap-8"
-            >
-              <img
-                className="block w-full h-full object-cover rounded-md"
-                src={slide.imageUrl}
-                alt={slide.alt}
-              />
-              <p className="m-0 text-sm md:text-md lg:text-lg text-white">
-                {index + 1} {slide.text}
-              </p>
-            </div>
-          ))}
-        </div>
+        )}
+      </div>
+      <div className=" xl:hidden lg:hidden flex flex-col gap-2 overflow-scroll lg:overflow-hidden px-2">
+        {slides.map((slide, index) => (
+          <div
+            key={index}
+            className="flex flex-col md:flex-row  gap-3 md:gap-5 w-100p h-1/3"
+          >
+            <img
+              className="block md:w-[70%] h-full w-100p object-cover rounded-md"
+              src={slide.imageUrl}
+              alt={slide.alt}
+            />
+            <p className="m-0 text-sm md:text-md lg:text-lg text-white block">
+              {index + 1} {slide.text}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   );

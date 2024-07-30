@@ -13,10 +13,9 @@ export default function Home() {
   return (
     <section
       id="home"
-      className="section w-full h-[100vh] flex flex-col items-center justify-center"
+      className="section w-full h-screen flex flex-col items-center justify-center"
     >
-      <Image src={code} alt="Logo code" width={100} height={100} />
-      <p className="text-white text-4xl mb-4">Hi !</p>
+      <p className="text-white md:text-8xl mb-4">Bienvenue !</p>
       <div className="flex items-center justify-center">
         <Image
           src={Cat05}

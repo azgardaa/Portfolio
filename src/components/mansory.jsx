@@ -9,7 +9,7 @@ const MasonryGrid = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleImageClick = (project) => {
-    setSelectedProject(project.slides);
+    setSelectedProject(project);
     setIsModalOpen(true);
   };
 
@@ -20,7 +20,7 @@ const MasonryGrid = () => {
 
   return (
     <ClientOnly>
-      <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
+      <ResponsiveMasonry columnsCountBreakPoints={{ 0: 1, 350: 2, 900: 3 }}>
         <Masonry>
           {imagesData.map((project) => (
             <img
@@ -40,7 +40,9 @@ const MasonryGrid = () => {
       </ResponsiveMasonry>
       {isModalOpen && selectedProject && (
         <Modal
-          slides={selectedProject}
+          name={selectedProject.name}
+          presentation={selectedProject.presentation}
+          slides={selectedProject.slides}
           github={selectedProject.github}
           onClose={handleCloseModal}
         />
