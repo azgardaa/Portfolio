@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "animate.css": "^4.1.1",
-    "hero-slider": "^3.2.1",
     "keen-slider": "^6.8.6",
     "next": "^14.2.5",
     "react": "^18",

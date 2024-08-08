@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Slider from "./slider";
 
 const Modal = ({ slides, onClose, github, name, presentation }) => {
@@ -12,8 +12,10 @@ const Modal = ({ slides, onClose, github, name, presentation }) => {
           &times;
         </button>
         <div className="p-4 flex flex-col justify-center items-center">
-          <h2 className="text-2xl font-bold text-white">{name}</h2>
-          <p className="mt-2 text-gray-400">{presentation}</p>
+          <h2 className="text-2xl font-bold text-white pb-4">{name}</h2>
+          <p className="mt-2 text-gray-400 w-90p lg:w-60p pb-4">
+            {presentation}
+          </p>
         </div>
         <Slider slides={slides} />
 

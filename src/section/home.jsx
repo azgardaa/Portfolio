@@ -5,17 +5,36 @@ import code from "../../public/code-2-svgrepo-com.png";
 
 export default function Home() {
   const strings = [
-    { text: "Je m'appelle Noah", pause: 2500, deleteAll: true },
-    { text: "Je suis développeur Front end", pause: 2500, deleteChars: 9 },
-    { text: "<strong>et Backend !</strong>", pause: 2500 },
+    {
+      text: "Je m'appelle Noah",
+      pause: 1000,
+      deleteAll: true,
+      changeDeleteSpeed: 1000,
+      changeDelay: 100,
+    },
+    { text: "Vous avez un projet ?", pause: 1000 },
+    {
+      text: "<strong> Une idée ?</strong>",
+      pause: 2500,
+      deleteAll: true,
+      changeDeleteSpeed: 1000,
+      changeDelay: 1000,
+    },
+    {
+      text: "N'hesitez plus et consulter mon portfolio !",
+      pause: 2500,
+      deleteAll: true,
+      changeDeleteSpeed: 1000,
+      changeDelay: 1000,
+    },
   ];
 
   return (
     <section
       id="home"
-      className="section w-full h-screen flex flex-col items-center justify-center"
+      className="section w-full h-screen flex flex-col items-center justify-center "
     >
-      <p className="text-white md:text-8xl mb-4">Bienvenue !</p>
+      <p className="text-white text-4xl xl:text-7xl mb-4">Bienvenue !</p>
       <div className="flex items-center justify-center">
         <Image
           src={Cat05}

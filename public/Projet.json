@@ -2,7 +2,7 @@
   {
     "id": "1",
     "name": "Kasa",
-    "presentation":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." ,
+    "presentation":"Dans le cadre d'un des projet Openclassrooms, il était demandé d'intégrer le design d'une maquette figma avec la technologie React.js. Ce projet fut ma première application React.js avec l'utilisation de react-router et typescript." ,
     "cover": "./image/Kasa/acceuil.PNG",
     "github":"https://github.com/azgardaa/kasa",
     "slides": [
@@ -35,31 +35,37 @@
   {
     "id": "2",
     "name": "Grimoire",
-    "presentation":"Texte de presentation du Projet" ,
-    "cover": "./image/Grimoire/chat1.avif",
-    "github":"https://github.com/azgardaa/kasa",
+    "presentation":"Dans le cadre d'un des projet Openclassrooms, il était demandé de crée le backend d'un site en créeant soit meme l'API et la base de Donnée en MongoDB" ,
+    "cover": "./image/Grimoire/Acceuil.PNG",
+    "github":"https://github.com/azgardaa/Projet-6-MVG",
     "slides": [
       {
         "id": "1",
-        "imageUrl": "./image/Grimoire/chat1.avif",
+        "imageUrl": "./image/Grimoire/Acceuil.PNG",
         "alt": "Projet Grimoire Image d'acceuil",
-        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        "text": "Page d'acceuil du projet MVG"
       },
       {
         "id": "2",
-        "imageUrl": "./image/Grimoire/cat2.jpg",
+        "imageUrl": "./image/Grimoire/page de connexion.PNG",
         "alt": "Fiche des appartements",
-        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        "text": "Page de connexion, ici il est demandé une adresse mail pour crée son compte (soumis a une regex) ainsi qu'un mot de passe (soumis lui aussi a une regex et liste)"
       },
       {
         "id": "3",
-        "imageUrl": "./image/Grimoire/cat5.png",
+        "imageUrl": "./image/Grimoire/ajout de livre.PNG",
         "alt": "Diapositive 3",
         "text": " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       },
       {
         "id": "4",
-        "imageUrl": "./image/Grimoire/wilfied 1.avif",
+        "imageUrl": "./image/Grimoire/Page Livre.PNG",
+        "alt": "Projet Grimoire Erreur404",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      },
+      {
+        "id": "5",
+        "imageUrl": "./image/Grimoire/Modifier Livre.PNG",
         "alt": "Projet Grimoire Erreur404",
         "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       }
@@ -67,32 +73,38 @@
   },
   {
     "id": "3",
-    "name": "Autre",
+    "name": "Booki",
     "presentation":"Texte de presentation du Projet" ,
-    "cover": "./image/Grimoire/chat1.avif",
-    "github":"https://github.com/azgardaa/kasa",
+    "cover": "./image/Booki/Acceuil.PNG",
+    "github":"https://github.com/azgardaa/booki-starter-code",
     "slides": [
       {
         "id": "1",
-        "imageUrl": "./image/Grimoire/chat1.avif",
-        "alt": "Projet Autre Image d'acceuil",
+        "imageUrl": "./image/Booki/Acceuil.PNG",
+        "alt": "Image d'acceuil",
         "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       },
       {
         "id": "2",
-        "imageUrl": "./image/Grimoire/cat2.jpg",
+        "imageUrl": "./image/Booki/Acceuil mediaquery.PNG",
         "alt": "Fiche des appartements",
         "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       },
       {
         "id": "3",
-        "imageUrl": "./image/Grimoire/cat5.png",
+        "imageUrl": "./image/Booki/Hebergement media query.PNG",
         "alt": "Diapositive 3",
         "text": " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       },
       {
         "id": "4",
-        "imageUrl": "./image/Grimoire/wilfied 1.avif",
+        "imageUrl": "./image/Booki/activité.PNG",
+        "alt": "Projet Autre Erreur404",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      },
+      {
+        "id": "5",
+        "imageUrl": "./image/Booki/activité mediaquery.PNG",
         "alt": "Projet Autre Erreur404",
         "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       }

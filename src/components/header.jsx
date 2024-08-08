@@ -22,10 +22,10 @@ const Header = () => {
   ];
 
   return (
-    <header className="flex md:h-[100vh] md:w-[10vh] z-50 fixed">
+    <header className="flex md:h-[100vh]  z-50 fixed shadow-[rgba(6,_24,_44,_0.4)_0px_0px_0px_2px,_rgba(6,_24,_44,_0.65)_0px_4px_6px_-1px,_rgba(255,_255,_255,_0.08)_0px_1px_0px_inset]">
       <nav
         className={
-          "border-primary md:px-1.5 md:py-2.5 rounded bg-transparent md:bg-primary md:shadow w-screen"
+          "border-primary  rounded bg-transparent md:bg-primary md:shadow w-screen md:w-[10vh]"
         }
       >
         <div className="flex flex-col items-center w-full">
@@ -34,7 +34,7 @@ const Header = () => {
             onClick={() => scroll.scrollToTop()}
           >
             <Image
-              className="self-center text-xl font-semibold whitespace-nowrap dark:text-white hidden md:block"
+              className="self-center text-xl font-semibold whitespace-nowrap dark:text-white hidden md:block md:px-1.5 md:py-2.5"
               src="/image/logo.png"
               alt="Logo Noah"
               width={100}
@@ -52,14 +52,14 @@ const Header = () => {
 
           {/* Menu Items */}
           <ul
-            className={`flex flex-col py-4 bg-black md:mt-0 md:items-baseline items-center md:bg-inherit ${
+            className={`flex flex-col py-4 bg-primary md:mt-0 md:items-baseline items-center md:bg-inherit  ${
               isMenuOpen ? "block border-none rounded w-full" : "hidden md:flex"
             }`}
           >
             {menuItems.map((menu) => (
               <li
                 key={menu.name}
-                className="md:bg-inherit md:border-none md:hover:bg-inherit py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50"
+                className="md:bg-inherit md:border-none md:hover:bg-inherit py-2 pr-2 pl-2 text-gray-700 border-b border-gray-100 "
               >
                 <ScrollLink
                   to={menu.to}
@@ -71,7 +71,7 @@ const Header = () => {
                     activeMenu === menu.to
                       ? "font-bold text-white"
                       : "text-danger"
-                  } md:hover:bg-transparent border-none md:border-0 hover:text-dangerPlus md:p-0 text-sm`}
+                  } md:hover:bg-transparent border-none md:border-0 hover:text-gray-50 md:p-0 text-sm`}
                   aria-current={activeMenu === menu.to ? "page" : undefined}
                 >
                   {menu.name}

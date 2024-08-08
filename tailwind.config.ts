@@ -25,11 +25,11 @@ const config: Config = {
         '100p': '100%',
       },
       colors: {
-        primary: '#03224C', 
-        secondary: '#E9C46A', 
-        accent: '#F4A261', 
-        danger: '#E76F51',
-        dangerPlus: '#8F4532'
+        primary: '#27374D', 
+        secondary: '#526D82', 
+        accent: '#9DB2BF', 
+        danger: '#DDE6ED',
+        dangerPlus: '#DDE6ED'
       },
     },
   },

@@ -1,65 +1,85 @@
-import React, { useRef, useEffect } from "react";
+import React, {
+  useRef,
+  useEffect,
+  useState,
+  useCallback,
+  createContext,
+} from "react";
+
+export const ScrollSectionContext = createContext();
 
 const ScrollSection = ({ children }) => {
   const sections = useRef([]);
   const isScrolling = useRef(false);
   const startY = useRef(0);
   const endY = useRef(0);
+  const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
+  const scrollSensitivity = 120; // Adjust this value to change scroll sensitivity
 
-  const disableScroll = () => {
+  const disableScroll = useCallback(() => {
     document.body.style.overflow = "hidden";
-  };
+  }, []);
 
-  const enableScroll = () => {
+  const enableScroll = useCallback(() => {
     document.body.style.overflow = "hidden";
-  };
+  }, []);
 
-  const handleScroll = (deltaY) => {
-    if (isScrolling.current) return;
-    isScrolling.current = true;
-    disableScroll();
+  const handleScroll = useCallback(
+    (deltaY) => {
+      if (isScrolling.current) return;
+      isScrolling.current = true;
+      disableScroll();
 
-    const currentSectionIndex = sections.current.findIndex(
-      (section) =>
-        section &&
-        section.getBoundingClientRect().top >= 0 &&
-        section.getBoundingClientRect().top < window.innerHeight / 2
-    );
+      const newIndex =
+        deltaY > 0 ? currentSectionIndex + 1 : currentSectionIndex - 1;
 
-    if (deltaY > 0 && currentSectionIndex < sections.current.length - 1) {
-      sections.current[currentSectionIndex + 1].scrollIntoView({
-        behavior: "smooth",
-      });
-    } else if (deltaY < 0 && currentSectionIndex > 0) {
-      sections.current[currentSectionIndex - 1].scrollIntoView({
+      if (newIndex >= 0 && newIndex < sections.current.length) {
+        setCurrentSectionIndex(newIndex);
+        sections.current[newIndex].scrollIntoView({
+          behavior: "smooth",
+        });
+      }
+
+      setTimeout(() => {
+        isScrolling.current = false;
+        enableScroll();
+      }, 1000); // Adjust this timeout as needed
+    },
+    [currentSectionIndex, disableScroll, enableScroll]
+  );
+
+  const handleWheel = useCallback(
+    (event) => {
+      event.preventDefault();
+      handleScroll(event.deltaY);
+    },
+    [handleScroll]
+  );
+
+  const handleTouchStart = useCallback((event) => {
+    startY.current = event.touches[0].clientY;
+  }, []);
+
+  const handleTouchMove = useCallback((event) => {
+    event.preventDefault();
+    endY.current = event.touches[0].clientY;
+  }, []);
+
+  const handleTouchEnd = useCallback(() => {
+    const deltaY = startY.current - endY.current;
+    if (Math.abs(deltaY) > scrollSensitivity) {
+      handleScroll(deltaY);
+    }
+  }, [handleScroll, scrollSensitivity]);
+
+  const scrollToSection = useCallback((index) => {
+    if (index >= 0 && index < sections.current.length) {
+      setCurrentSectionIndex(index);
+      sections.current[index].scrollIntoView({
         behavior: "smooth",
       });
     }
-
-    setTimeout(() => {
-      isScrolling.current = false;
-      enableScroll();
-    }, 1000); // Adjust this timeout as needed
-  };
-
-  const handleWheel = (event) => {
-    event.preventDefault();
-    handleScroll(event.deltaY);
-  };
-
-  const handleTouchStart = (event) => {
-    startY.current = event.touches[0].clientY;
-  };
-
-  const handleTouchMove = (event) => {
-    event.preventDefault();
-    endY.current = event.touches[0].clientY;
-  };
-
-  const handleTouchEnd = () => {
-    const deltaY = startY.current - endY.current;
-    handleScroll(deltaY);
-  };
+  }, []);
 
   useEffect(() => {
     window.addEventListener("wheel", handleWheel, { passive: false });
@@ -73,20 +93,24 @@ const ScrollSection = ({ children }) => {
       window.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("touchend", handleTouchEnd);
     };
-  }, []);
+  }, [handleWheel, handleTouchStart, handleTouchMove, handleTouchEnd]);
 
   return (
-    <div>
-      {React.Children.map(children, (child, index) => (
-        <div
-          ref={(el) => (sections.current[index] = el)}
-          key={index}
-          className="h-screen w-full"
-        >
-          {child}
-        </div>
-      ))}
-    </div>
+    <ScrollSectionContext.Provider
+      value={{ scrollToSection, currentSectionIndex }}
+    >
+      <div>
+        {React.Children.map(children, (child, index) => (
+          <div
+            ref={(el) => (sections.current[index] = el)}
+            key={index}
+            className="h-screen w-full"
+          >
+            {child}
+          </div>
+        ))}
+      </div>
+    </ScrollSectionContext.Provider>
   );
 };
 

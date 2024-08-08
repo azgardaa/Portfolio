@@ -27,7 +27,7 @@ const Slider = ({
         loop: true,
         slides: {
           origin: "center",
-          perView: 1.6,
+          perView: 2,
           spacing: 5,
         },
         detailsChanged: (s) => {
@@ -108,7 +108,7 @@ const Slider = ({
     }
 
     function scaleElement(element, portion, isCentral) {
-      const scale_size = isCentral ? 2 : 0.5;
+      const scale_size = isCentral ? 1 : 0.5;
       const scale = 1 - (scale_size - scale_size * portion);
       const scale_style = `scale(${scale})`;
       element.style.transform = scale_style;
@@ -143,24 +143,24 @@ const Slider = ({
   ]);
 
   return (
-    <div className=" flex flex-col justify-center  w-full flex-grow">
+    <div className=" flex flex-col justify-center ">
       <div
         id="slider-wrapper"
         className="py-4 hidden lg:block xl:block 2xl:block "
       >
         <div
           id="image-slider"
-          className="keen-slider relative  w-100p"
+          className="keen-slider w-100p"
           ref={imageSliderRef}
         >
           {slides.map((slide, index) => (
             <div
               key={index}
-              className={`keen-slider__slide flex flex-col justify-center ${
-                centralSlide === index ? "w-2/4" : "w-1/4"
+              className={`keen-slider__slide flex flex-col justify-start items-center  ${
+                centralSlide === index ? "" : ""
               }`}
             >
-              <div className="rounded-xl overflow-hidden justify-center">
+              <div className="rounded-xl  justify-center">
                 <img
                   className={`object-contain rounded-xl ${
                     centralSlide === index ? "cursor-pointer" : ""
@@ -203,7 +203,7 @@ const Slider = ({
               alt={slide.alt}
             />
             <p className="m-0 text-sm md:text-md lg:text-lg text-white block">
-              {index + 1} {slide.text}
+              {slide.text}
             </p>
           </div>
         ))}

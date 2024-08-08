@@ -12,7 +12,7 @@ class MyDocument extends Document {
             content="width=device-width, initial-scale=1.0"
           />
         </Head>
-        <body className="relative">
+        <body className="relative overflow-hidden">
           <Main />
           <NextScript />
         </body>
