@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MasonryGrid from "../components/mansory";
 import ScrollSection from "../components/ScrollSection"; // Assurez-vous que le chemin est correct
+import Modal from "../components/modal";
 
 export default function Projet() {
   const [isModalOpen, setIsModalOpen] = useState(false);
