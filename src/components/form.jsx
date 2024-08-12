@@ -72,7 +72,7 @@ export default function Form() {
                 className="block text-white text-sm font-bold mb-2"
                 htmlFor="name"
               >
-                Nom Prenom<span className="text-red-500">&#42;</span>
+                Nom Prenom<span className="text-red-600">&#42;</span>
               </label>
               <input
                 className="w-full px-3 py-2 text-black leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
@@ -92,7 +92,7 @@ export default function Form() {
                 className="block text-white text-sm font-bold mb-2"
                 htmlFor="email"
               >
-                Email<span className="text-red-500">&#42;</span>
+                Email<span className="text-red-600">&#42;</span>
               </label>
               <input
                 className="w-full px-3 py-2 text-black leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
@@ -119,7 +119,7 @@ export default function Form() {
               className="block text-white text-sm font-bold mb-2"
               htmlFor="subject"
             >
-              Sujet<span className="text-red-500">&#42;</span>
+              Sujet<span className="text-red-600">&#42;</span>
             </label>
             <input
               className="w-full px-3 py-2 text-black leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
@@ -139,7 +139,7 @@ export default function Form() {
               className="block text-white text-sm font-bold mb-2"
               htmlFor="message"
             >
-              Message<span className="text-red-500">&#42;</span>
+              Message<span className="text-red-600">&#42;</span>
             </label>
             <textarea
               className="w-full px-3 py-2 text-black leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"

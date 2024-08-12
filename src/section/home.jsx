@@ -1,7 +1,6 @@
 import TypewriterComponent from "../components/typeWriter";
 import Image from "next/image";
 import Cat05 from "../../public/image/cat05.png";
-import code from "../../public/code-2-svgrepo-com.png";
 
 export default function Home() {
   const strings = [
@@ -9,7 +8,7 @@ export default function Home() {
       text: "Je m'appelle Noah",
       pause: 1000,
       deleteAll: true,
-      changeDeleteSpeed: 1000,
+      deleteSpeed: 50,
       changeDelay: 100,
     },
     { text: "Vous avez un projet ?", pause: 1000 },
@@ -17,14 +16,14 @@ export default function Home() {
       text: "<strong> Une idée ?</strong>",
       pause: 2500,
       deleteAll: true,
-      changeDeleteSpeed: 1000,
+      deleteSpeed: 50,
       changeDelay: 1000,
     },
     {
       text: "N'hesitez plus et consulter mon portfolio !",
       pause: 2500,
       deleteAll: true,
-      changeDeleteSpeed: 1000,
+      deleteSpeed: 50,
       changeDelay: 1000,
     },
   ];
@@ -34,7 +33,7 @@ export default function Home() {
       id="home"
       className="section w-full h-screen flex flex-col items-center justify-center "
     >
-      <p className="text-white text-4xl xl:text-7xl mb-4">Bienvenue !</p>
+      <h1 className="text-white text-4xl xl:text-7xl mb-4">Bienvenue !</h1>
       <div className="flex items-center justify-center">
         <Image
           src={Cat05}

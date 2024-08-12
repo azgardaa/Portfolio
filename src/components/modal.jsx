@@ -6,7 +6,7 @@ const Modal = ({ slides, onClose, github, name, presentation }) => {
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 z-50">
       <div className="relative bg-gray-800 rounded-lg shadow-lg overflow-scroll lg:overflow-hidden w-[90%] h-[90%]">
         <button
-          className="sticky top-4 left-[90%] text-gray-800 text-xl sm:text-2xl bg-gray-200 px-2 py-1 rounded-full hover:bg-gray-300 z-50"
+          className="sticky top-4 left-[90%] text-gray-800 text-xl sm:text-2xl bg-gray-200 px-2  rounded-lg hover:bg-gray-300 z-50"
           onClick={onClose}
         >
           &times;

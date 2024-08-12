@@ -71,7 +71,7 @@ const Header = () => {
                     activeMenu === menu.to
                       ? "font-bold text-white"
                       : "text-danger"
-                  } md:hover:bg-transparent border-none md:border-0 hover:text-gray-50 md:p-0 text-sm`}
+                  } md:hover:bg-transparent border-none md:border-0 hover:text-gray-50 md:p-0 text-sm nav-link`}
                   aria-current={activeMenu === menu.to ? "page" : undefined}
                 >
                   {menu.name}

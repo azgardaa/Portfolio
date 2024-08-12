@@ -2,17 +2,17 @@
     "slides": [
       {
         "title": "Qui je suis ?",
-        "subtitle": "A beautiful mountain pass in the Dolomites.",
+        "subtitle": "Je m'appelle Noah et je suis developpeur Web, j'ai 25 ans, je me suis lancé dans le developpement web pendant ma carriere avec une formation openclassroom  ",
         "backgroundImageSrc": "./image/Cat03.jpg"
       },
       {
         "title": "Le sport ?",
         "subtitle": "Semi-pro en volley, je combine discipline sportive et compétences professionnelles avec succès.",
-        "backgroundImageSrc": "./image/fondballon.PNG"
+        "backgroundImageSrc": "./image/Fond/fondballon.PNG"
       },
       {
-        "title": "County Clare - Ireland",
-        "subtitle": "Famous for its stunning coastal scenery.",
+        "title": "Dev ?",
+        "subtitle": "Je sais pas quoi mettre mais c'est cool",
         "backgroundImageSrc": "https://i.imgur.com/idjXzVQ.jpg"
       },
       {
