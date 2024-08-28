@@ -42,11 +42,9 @@ const HeroSlider = ({ slides }) => {
               backgroundPosition: "center",
             }}
           >
-            <div className="text-center text-white flex flex-col items-center  ">
+            <div className="text-center text-white flex flex-col items-center w-2/4 ">
               <h2 className="text-4xl font-bold">{slide.title}</h2>
-              <p className="mt-4 text-lg w-3/4 align-center">
-                {slide.subtitle}
-              </p>
+              <p className="mt-4 text-lg  align-center">{slide.subtitle}</p>
             </div>
           </div>
         ))}

@@ -10,32 +10,32 @@
         "id": "1",
         "imageUrl": "./image/Kasa/acceuil.PNG",
         "alt": "Projet Kasa Image d'acceuil",
-        "text": "Acceuil"
+        "text": "La page d'acceuil du projet Kasa, avec le slogan de presentation, une barre de navigation et les differents logements"
       },
       {
         "id": "2",
         "imageUrl": "./image/Kasa/appart.PNG",
         "alt": "Fiche des appartements",
-        "text": "Fiche des appartements"
+        "text": "Lorsque l'on clique sur un appartement, cela ouvre cette page ou l'on peut voir toutes les informations qui y sont repertoriés"
       },
       {
         "id": "3",
         "imageUrl": "./image/Kasa/apropos.PNG",
-        "alt": "Diapositive 3",
-        "text": "  "
+        "alt": "Page A Propos",
+        "text": "La page A Propos permet d'acceder aux informations du site"
       },
       {
         "id": "4",
         "imageUrl": "./image/Kasa/404.PNG",
         "alt": "Projet Kasa Erreur404",
-        "text": "erreur404 tu connais "
+        "text": "Cette page apparait lorsque le mauvais URL est rentrée ou alors que la page n'est pas trouvé et vous redirige vers la page d'acceuil"
       }
     ]
   },
   {
     "id": "2",
     "name": "Grimoire",
-    "presentation":"Dans le cadre d'un des projet Openclassrooms, il était demandé de crée le backend d'un site en créeant soit meme l'API et la base de Donnée en MongoDB" ,
+    "presentation":"Dans le cadre d'un des projet Openclassrooms, il était demandé de crée le backend d'un site en créeant soit meme l'API et la base de donnée en utilisant Mangoose et MongoDB" ,
     "cover": "./image/Grimoire/Acceuil.PNG",
     "github":"https://github.com/azgardaa/Projet-6-MVG",
     "slides": [
@@ -43,7 +43,7 @@
         "id": "1",
         "imageUrl": "./image/Grimoire/Acceuil.PNG",
         "alt": "Projet Grimoire Image d'acceuil",
-        "text": "Page d'acceuil du projet MVG"
+        "text": "Page d'acceuil du projet MVG, montrant les livres pouvant etre ajouté ainsi que la moyenne des notes"
       },
       {
         "id": "2",
@@ -55,26 +55,26 @@
         "id": "3",
         "imageUrl": "./image/Grimoire/ajout de livre.PNG",
         "alt": "Diapositive 3",
-        "text": " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        "text": "La page d'ajout de livre ou tout est recuperer via une API rest qui va stocker le tout dans la base de donnée MongoDB"
       },
       {
         "id": "4",
         "imageUrl": "./image/Grimoire/Page Livre.PNG",
         "alt": "Projet Grimoire Erreur404",
-        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        "text": "Une fois le livre ajouté si le token de connexion est le bon il est possible de modifier le livre, sinon seul la notation du livre est possible"
       },
       {
         "id": "5",
         "imageUrl": "./image/Grimoire/Modifier Livre.PNG",
         "alt": "Projet Grimoire Erreur404",
-        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        "text": "Page de modification de livre accessible seulement sur les livres publiés soit meme"
       }
     ]
   },
   {
     "id": "3",
     "name": "Booki",
-    "presentation":"Texte de presentation du Projet" ,
+    "presentation":"Dans le cadre d'un des projet Openclassrooms, Le projet Booki est fait en HTML et CSS dans celui ci on apprend a mettre en place des Media Query et a utiliser la disposition flex, Une base de code est fournis m'ai l'entiereter du CSS est fait a la main" ,
     "cover": "./image/Booki/Acceuil.PNG",
     "github":"https://github.com/azgardaa/booki-starter-code",
     "slides": [
@@ -82,31 +82,31 @@
         "id": "1",
         "imageUrl": "./image/Booki/Acceuil.PNG",
         "alt": "Image d'acceuil",
-        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        "text": "La page d'acceuil qui contient une barre de recherche et des filtres (Non fonctionnel) ainsi que des cards contenant les Hebergements"
       },
       {
         "id": "2",
         "imageUrl": "./image/Booki/Acceuil mediaquery.PNG",
         "alt": "Fiche des appartements",
-        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        "text": "Barre de navigation et les filtres passé au format téléphone"
       },
       {
         "id": "3",
         "imageUrl": "./image/Booki/Hebergement media query.PNG",
         "alt": "Diapositive 3",
-        "text": " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        "text": "Les hebergements passé au format téléphone"
       },
       {
         "id": "4",
         "imageUrl": "./image/Booki/activité.PNG",
         "alt": "Projet Autre Erreur404",
-        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        "text": "Onglet des activitées en bas de la page d'acceuil"
       },
       {
         "id": "5",
         "imageUrl": "./image/Booki/activité mediaquery.PNG",
         "alt": "Projet Autre Erreur404",
-        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        "text": "Les activitées sont passée au format téléphone pour etre plus lisible"
       }
     ]
   },

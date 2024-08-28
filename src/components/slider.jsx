@@ -143,30 +143,24 @@ const Slider = ({
   ]);
 
   return (
-    <div className=" flex flex-col justify-center ">
+    <div className=" flex flex-col">
       <div
         id="slider-wrapper"
-        className="py-4 hidden lg:block xl:block 2xl:block "
+        className="py-4 hidden lg:block xl:block 2xl:block"
       >
         <div
           id="image-slider"
-          className="keen-slider w-100p"
+          className="keen-slider w-full max-h-[60vh] overflow-hidden"
           ref={imageSliderRef}
         >
           {slides.map((slide, index) => (
-            <div
-              key={index}
-              className={`keen-slider__slide flex flex-col justify-start items-center  ${
-                centralSlide === index ? "" : ""
-              }`}
-            >
-              <div className="rounded-xl  justify-center">
+            <div key={index} className="keen-slider__slide flex">
+              <div className="w-full h-full flex">
                 <img
-                  className={`object-contain rounded-xl ${
-                    centralSlide === index ? "cursor-pointer" : ""
-                  }`}
+                  className="object-contain w-full h-full transition-transform duration-300"
                   src={slide.imageUrl}
                   alt={slide.alt}
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -175,15 +169,15 @@ const Slider = ({
         {enableText && (
           <div
             id="text-slider"
-            className="keen-slider relative z-10 rounded-xl flex-grow"
+            className="keen-slider relative z-10 rounded-xl pt-2"
             ref={textSliderRef}
           >
             {slides.map((slide, index) => (
               <div
                 key={index}
-                className="keen-slider__slide absolute top-0 opacity-100  flex-col justify-center "
+                className="keen-slider__slide flex justify-center items-center"
               >
-                <div className="text-white text-center opacity-100 font-medium align-middle px-4 ">
+                <div className="text-white text-center font-medium px-4">
                   {slide.text}
                 </div>
               </div>

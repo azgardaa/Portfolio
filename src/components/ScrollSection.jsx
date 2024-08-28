@@ -122,7 +122,7 @@ const ScrollSection = ({ children }) => {
         <div
           ref={(el) => (sectionRefs.current[index] = el)}
           key={index}
-          className="h-screen w-full"
+          className="h-screen w-full z-10"
         >
           {child}
         </div>
