@@ -1,6 +1,6 @@
 import TypewriterComponent from "../components/typeWriter";
 import Image from "next/image";
-import Cat05 from "../../public/image/cat05.png";
+import Cat05 from "../../public/images/cat05.png";
 
 export default function Home() {
   const strings = [
