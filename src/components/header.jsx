@@ -15,7 +15,7 @@ const Header = () => {
   };
 
   const menuItems = [
-    { name: "Home", to: "home" },
+    { name: "Acceuil", to: "acceuil" },
     { name: "A propos", to: "apropos" },
     { name: "Projet", to: "projet" },
     { name: "Contact", to: "contact" },

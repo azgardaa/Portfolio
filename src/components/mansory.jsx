@@ -1,11 +1,51 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
-import imagesData from "../../public/Projet.json"; // Assurez-vous que le chemin est correct
 import Modal from "./modal"; // Assurez-vous que le chemin est correct
 import ClientOnly from "../ClientOnly";
 
 const MasonryGrid = () => {
+  const [projects, setProjects] = useState([]);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/projects?populate[cover]=*&populate[slides][populate]=imageUrl`
+        );
+
+        // Traitement des données récupérées
+        const fetchedProjects = response.data.data.map((project) => ({
+          id: project.id,
+          name: project.attributes.name,
+          presentation: project.attributes.presentation,
+          github: project.attributes.github,
+          cover: `${process.env.NEXT_PUBLIC_API_URL}${project.attributes.cover.data.attributes.url}`,
+          slides: project.attributes.slides.map((slide) => ({
+            id: slide.id,
+            alt: slide.alt,
+            text: slide.text,
+            imageUrl: slide.imageUrl.data.map(
+              (image) =>
+                `${process.env.NEXT_PUBLIC_API_URL}${image.attributes.url}`
+            ),
+          })),
+        }));
+
+        setProjects(fetchedProjects);
+        setLoading(false);
+      } catch (err) {
+        console.error("Erreur lors de la récupération des données :", err);
+        setError("Impossible de récupérer les projets");
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, []);
 
   const handleImageClick = (project) => {
     setSelectedProject(project);
@@ -15,11 +55,14 @@ const MasonryGrid = () => {
     setSelectedProject(null);
   };
 
+  if (loading) return <p>Chargement des projets...</p>;
+  if (error) return <p>{error}</p>;
+
   return (
     <ClientOnly>
-      <ResponsiveMasonry columnsCountBreakPoints={{ 0: 1, 350: 2, 900: 3 }}>
+      <ResponsiveMasonry columnsCountBreakPoints={{ 0: 1, 750: 2, 900: 3 }}>
         <Masonry>
-          {imagesData.map((project) => (
+          {projects.map((project) => (
             <img
               key={project.id}
               src={project.cover}

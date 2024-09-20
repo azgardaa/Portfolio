@@ -156,7 +156,7 @@ export default function Form() {
           </div>
           <div className="flex items-center justify-center md:justify-end py-4 px-8">
             <button className="py-2 px-4 md:py-4 md:px-6 bg-gray-800 rounded-md border-2 border-white flex items-center gap-2 hover:scale-95 transition-all">
-              <span className="text-xl">Submit</span>
+              <span className="text-xl">Envoyer</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="icon icon-tabler icon-tabler-brand-telegram"

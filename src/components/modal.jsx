@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import Slider from "./slider";
 
 const Modal = ({ slides, onClose, github, name, presentation }) => {
