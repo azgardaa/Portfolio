@@ -12,7 +12,7 @@ export default function About() {
       try {
         // Requête avec "populate" pour récupérer les images
         const response = await axios.get(
-          "http://localhost:1337/api/slides?populate=*"
+          "https://portfolio-noah-38d5c17b2d07.herokuapp.com/api/slides?populate=*"
         );
 
         const fetchedSlides = response.data.data.map((slide) => ({
@@ -22,7 +22,7 @@ export default function About() {
           // Récupération de l'URL de l'image
           backgroundImageSrc: slide.attributes.backgroundImageSrc.data[0]
             .attributes.url
-            ? `http://localhost:1337${slide.attributes.backgroundImageSrc.data[0].attributes.url}`
+            ? `https://portfolio-noah-38d5c17b2d07.herokuapp.com/${slide.attributes.backgroundImageSrc.data[0].attributes.url}`
             : null,
         }));
 
