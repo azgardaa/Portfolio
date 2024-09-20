@@ -35,7 +35,7 @@ const Header = () => {
           >
             <Image
               className="self-center text-xl font-semibold whitespace-nowrap dark:text-white hidden md:block md:px-1.5 md:py-2.5"
-              src="/image/logo.png"
+              src="/images/logo.png"
               alt="Logo Noah"
               width={100}
               height={100}
