@@ -30,7 +30,7 @@ export default function Home() {
 
   return (
     <section
-      id="home"
+      id="acceuil"
       className="section w-full h-screen flex flex-col items-center justify-center "
     >
       <h1 className="text-white text-4xl xl:text-7xl mb-4">Bienvenue !</h1>
