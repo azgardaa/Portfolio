@@ -15,16 +15,18 @@ export default function About() {
           "https://portfolio-noah-38d5c17b2d07.herokuapp.com/api/slides?populate=*"
         );
 
-        const fetchedSlides = response.data.data.map((slide) => ({
-          id: slide.id,
-          title: slide.attributes.title,
-          subtitle: slide.attributes.subtitle,
-          // Récupération de l'URL de l'image
-          backgroundImageSrc: slide.attributes.backgroundImageSrc.data[0]
-            .attributes.url
-            ? `https://portfolio-noah-38d5c17b2d07.herokuapp.com/${slide.attributes.backgroundImageSrc.data[0].attributes.url}`
-            : null,
-        }));
+        const fetchedSlides = response.data.data.map((slide) => {
+          const imageUrl =
+            slide.attributes.backgroundImageSrc?.data?.attributes?.url;
+
+          return {
+            id: slide.id,
+            title: slide.attributes.title,
+            subtitle: slide.attributes.subtitle,
+            // Construction de l'URL de l'image
+            backgroundImageSrc: imageUrl,
+          };
+        });
 
         setSlides(fetchedSlides);
         setLoading(false);
