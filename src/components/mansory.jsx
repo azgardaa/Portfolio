@@ -17,24 +17,17 @@ const MasonryGrid = () => {
           `https://portfolio-noah-38d5c17b2d07.herokuapp.com/api/projects?populate[cover]=*&populate[slides][populate]=imageUrl`
         );
 
-        // Traitement des données récupérées
         const fetchedProjects = response.data.data.map((project) => ({
           id: project.id,
           name: project.attributes.name,
           presentation: project.attributes.presentation,
           github: project.attributes.github,
-          cover: project.attributes.cover.data.attributes.url.startsWith("http")
-            ? project.attributes.cover.data.attributes.url
-            : `https://portfolio-noah-38d5c17b2d07.herokuapp.com${project.attributes.cover.data.attributes.url}`,
+          cover: project.attributes.cover.data.attributes.url,
           slides: project.attributes.slides.map((slide) => ({
             id: slide.id,
             alt: slide.alt,
             text: slide.text,
-            imageUrl: slide.imageUrl.data.map((image) =>
-              image.attributes.url.startsWith("http")
-                ? `https://portfolio-noah-38d5c17b2d07.herokuapp.com${image.attributes.url}`
-                : image.attributes.url
-            ),
+            imageUrl: slide.imageUrl.data.map((image) => image.attributes.url),
           })),
         }));
 
