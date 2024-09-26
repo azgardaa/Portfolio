@@ -158,7 +158,7 @@ const Slider = ({
               <div className="w-full h-full flex">
                 <img
                   className="object-contain w-full h-full transition-transform duration-300"
-                  src={slide.url}
+                  src={slide.imageUrl}
                   alt={slide.alt}
                   loading="lazy"
                 />
