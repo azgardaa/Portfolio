@@ -20,7 +20,7 @@ export default function Home() {
       changeDelay: 1000,
     },
     {
-      text: "N'hesitez plus et consulter mon portfolio !",
+      text: "Consultez mon portfolio !",
       pause: 2500,
       deleteAll: true,
       deleteSpeed: 50,

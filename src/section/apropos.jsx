@@ -10,7 +10,6 @@ export default function About() {
   useEffect(() => {
     const fetchSlides = async () => {
       try {
-        // Requête avec "populate" pour récupérer les images
         const response = await axios.get(
           "https://portfolio-noah-38d5c17b2d07.herokuapp.com/api/slides?populate=*"
         );
@@ -19,7 +18,6 @@ export default function About() {
           id: slide.id,
           title: slide.attributes.title,
           subtitle: slide.attributes.subtitle,
-          // Vérification si les données d'image existent
           backgroundImageSrc:
             slide.attributes.backgroundImageSrc &&
             slide.attributes.backgroundImageSrc.data &&
